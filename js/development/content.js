@@ -206,7 +206,7 @@ var content = {
 
 			function apiWrapper() {
 				API({
-					url: 'https://clickbait-blocker.herokuapp.com/api/clickbait',
+					url: 'https://yourAPI',
 					method: 'POST',
 					data: {
 						pageUrl: content.getPageUrl(),
@@ -326,7 +326,7 @@ var content = {
 			link: $(_this).attr('data-url')
 		}, function() {
 			API({
-				url: 'https://clickbait-blocker.herokuapp.com/api/clickbait',
+				url: 'https://yourAPI',
 				method: 'POST',
 				data: {
 					pageUrl: content.getPageUrl(),
@@ -356,7 +356,7 @@ var content = {
 					}
 
 					API({
-						url: 'https://clickbait-blocker.herokuapp.com/api/clickbait',
+						url: 'https://yourAPI',
 						method: 'GET',
 						data: {
 							pageDomain: domain,
