@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://stanciuandrei@bitbucket.org/stanciuandrei/clickbaitkiller_fe.git"
+    "url": "git+https://github.com/andrei10k/clickbait_blocker-FE.git"
   },
   "keywords": [
     "clickbait"
   ],
   "author": "Andrei Stanciu",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/stanciuandrei/clickbaitkiller_fe#readme",
+  "homepage": "https://github.com/andrei10k/clickbait_blocker-FE.git#readme",
   "devDependencies": {
     "del": "^2.2.2",
     "gulp": "^3.9.1",
