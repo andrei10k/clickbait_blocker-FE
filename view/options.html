@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Options</title>
+    <link rel="stylesheet" href="/css/options.css">
+    <script src="/vendor/js/jquery-2.2.4.min.js"></script>
+    <script src="/vendor/js/mustache.js"></script>
+    <script src="/js/build/options.js"></script>
+</head>
+<body class="clickbait-blocker-chrome-extension">
+<header>
+    <div class="logo-container">
+        <img class="logo" src="../image/large-icon.png"></img>
+        <span class="logo-label">Clickbait Blocker</span>
+    </div>
+</header>
+<div class="content">
+    <div class="section">
+        <h1>General Options</h1>
+        <h2>Set relevance (confirmed clickbaits minus infirmed clickbaits):
+           <input type="number" name="general-relevance" id="general-relevance" value="0" min="0" />
+        </h2>
+        <h4>
+            <i>
+                * This value is taken into consideration when an article is considered clickbait or not. E.g: if you set
+                a relevance value of 10, then all articles with the number of "confirmed as clickbait" votes higher than 10
+                will be hidden. All articles with the number of "confirmed as clickbait" votes lower than 10 will be shown.
+            </i>
+        </h4>
+    </div>
+
+    <div class="section">
+        <h1>Whitelist domains (<span class="whitelist-items-no-js">0</span>)</h1>
+        <h4>
+            <i>
+                * A whitelist domain is a domain you trust. We'll never hide articles on this domain no matter the relevance.
+            </i>
+        </h4>
+        <div class="whitelist-container-js"></div>
+        <h3 class="no-whitelist-js no-whitelist">Currently you don't have any domains whitelisted</h3>
+    </div>
+
+    <div class="section">
+        <h1>Add custom relevance for certain domains</h1>
+        <h4>
+            <i>
+            * For a domain in this list the custom relevance you set will override the general relevance. E.g:
+            if you set a custom relevance of 20 for www.example.com and your general relevance is 10,
+            then all articles on www.example.com, with the number of "confirmed as clickbait" votes higher than 20
+            will be hidden. All articles with the number of "confirmed as clickbait" votes lower than 20 will be shown.
+            </i>
+        </h4>
+        <button class="add-custom-domain-js">Add new domain</button>
+
+        <div class="custom-domain-row-container-js custom-domain-row-container hide">
+            <label for="custom-domain-input">Domain</label>
+            <input type="text" placeholder="www.example.com"
+                   class="custom-domain-input custom-domain-input-js"
+                   name="custom-domain-input"/>
+            <label for="custom-relevance-select">Relevance</label>
+            <input type="number" name="custom-relevance-select" id="custom-relevance-select" value="0" min="0" />
+            <button class="custom-domain-save custom-domain-save-js" disabled="disabled">Add</button>
+        </div>
+
+        <div class="custom-domains-list custom-domains-list-js"></div>
+    </div>
+</div>
+
+<script id="whitelist" type="text/template">
+    {{#whitelist}}
+      <div class="whitelist-row">
+          <h2 class="whitelist-item">{{.}}</h2>
+          <button class="remove-item remove-item-from-whitelist-js" data-url="{{.}}">Remove</button>
+      </div>
+    {{/whitelist}}
+</script>
+
+<script id="custom-domain-list" type="text/template">
+    {{#customDomain}}
+    <div class="custom-domain-row">
+        <h2 class="custom-domain-item">{{domain}}</h2>
+        <h2 class="custom-domain-relevance">Relevance: <b>{{relevance}}</b></h2>
+        <button class="remove-custom-item remove-item-from-custom-domains-list-js" data-url="{{domain}}">Remove</button>
+    </div>
+    {{/customDomain}}
+</script>
+
+</body>
+</html>

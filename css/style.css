@@ -1,0 +1,261 @@
+.main.clickbait-blocker-chrome-extension {
+  width: 350px;
+  margin: 0px;
+  padding: 0px;
+}
+.clickbait-blocker-chrome-extension header {
+  height: 70px;
+  border-bottom: 1px solid #cfcdba;
+  background-color: #eee;
+  position:relative;
+  text-align: center;
+}
+
+.clickbait-blocker-chrome-extension .content {
+  border-bottom: 1px solid #cfcdba;
+  padding: 10px 0 10px 8px;
+  background-color: #f7f7f7;
+}
+
+.clickbait-blocker-chrome-extension .content.options {
+   background-color: #eee;
+ }
+
+.clickbait-blocker-chrome-extension .content:last-of-type {
+  border: none;
+}
+
+.clickbait-blocker-chrome-extension h3 {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.clickbait-blocker-chrome-extension .item-content {
+  margin-bottom: 8px;
+}
+
+.clickbait-blocker-chrome-extension .item {
+  margin: 0;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.clickbait-blocker-chrome-extension .item:hover{
+  background: #d3dce1;
+}
+
+.clickbait-blocker-chrome-extension .logo-container{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: auto;
+}
+
+.clickbait-blocker-chrome-extension .logo {
+  object-fit: cover;
+  width: 60px;
+  vertical-align: middle;
+}
+
+.clickbait-blocker-chrome-extension .settings {
+  object-fit: cover;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.clickbait-blocker-chrome-extension .eye {
+  object-fit: cover;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.clickbait-blocker-chrome-extension .checkmark {
+  object-fit: cover;
+  height: 15px;
+  vertical-align: middle;
+}
+
+.clickbait-blocker-chrome-extension .cross {
+  object-fit: cover;
+  height: 15px;
+  vertical-align: middle;
+}
+
+.clickbait-blocker-chrome-extension .logo-label {
+  font-size: 15px;
+  position: relative;
+  left: 5px
+}
+.clickbait-blocker-chrome-extension .hide {
+  display: none;
+}
+
+.clickbait-blocker-chrome-extension-mark {
+  background-image: url('chrome-extension://mlljfchleidlfeemodakgpjkmagpafcn/image/plus.png');
+  float: right;
+  background-size: cover;
+  cursor: pointer;
+  position: relative;
+  right: 2px;
+  width: 25px;
+  height: 25px;
+  top: 3px;
+}
+
+.clickbait-blocker-chrome-extension-mark.loading,
+.clickbait-blocker-chrome-extension-confirm.loading,
+.clickbait-blocker-chrome-extension-infirm.loading
+{
+  background-image: url('chrome-extension://mlljfchleidlfeemodakgpjkmagpafcn/image/loading.gif');
+}
+
+.clickbait-blocker-chrome-extension-unmark {
+  background-image: url('chrome-extension://mlljfchleidlfeemodakgpjkmagpafcn/image/minus.png');
+  width: 30px;
+  height: 30px;
+  float: left;
+  margin-left: 20px;
+  background-size: cover;
+}
+
+.clickbait-blocker-chrome-extension-label {
+  color: #000;
+  margin-left: 10px;
+  font: bold 11px 'Lucida Sans', 'Lucida Grande', 'Lucida', helvetica, clean, sans-serif;
+}
+
+.clickbait-blocker-chrome-extension-buttons-wrapper {
+  position: absolute;
+  height: 30px;
+  background: #E5E5EA;
+  border-radius: 25px;
+  float: right;
+  width: 140px;
+  z-index: 9999;
+  color: #000;
+  font: bold 11px 'Lucida Sans', 'Lucida Grande', 'Lucida', helvetica, clean, sans-serif;
+  line-height: 30px;
+  text-indent: 10px;
+  cursor: pointer;
+}
+
+.clickbait-blocker-chrome-extension-reveal-original-wrapper {
+  position: absolute;
+  height: 30px;
+  background: #E5E5EA;
+  border-radius: 25px;
+  float: right;
+  width: auto;
+  z-index: 9999;
+  color: #000;
+  font: bold 11px 'Lucida Sans', 'Lucida Grande', 'Lucida', helvetica, clean, sans-serif;
+  line-height: 30px;
+}
+
+.clickbait-blocker-chrome-extension-reveal-original {
+  cursor: pointer !important;
+  color: #07C !important;
+  font: bold 11px 'Lucida Sans', 'Lucida Grande', 'Lucida', helvetica, clean, sans-serif !important;
+  line-height: 30px !important;
+  display: block !important;
+  text-align: center !important;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.clickbait-blocker-chrome-extension-reveal-original:hover {
+  text-decoration: underline !important;
+}
+
+.clickbait-upvotes {
+  background-image: url('chrome-extension://mlljfchleidlfeemodakgpjkmagpafcn/image/up.png');
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  margin-left: 0;
+  text-indent: 25px;
+  float: left;
+  cursor: pointer;
+  margin-right: 25px;
+}
+.clickbait-downvotes {
+  background-image: url('chrome-extension://mlljfchleidlfeemodakgpjkmagpafcn/image/down.png');
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  text-indent: 25px;
+  float: left;
+  margin: 0 25px 0 10px;
+  cursor: pointer;
+}
+
+.clickbait-blocker-chrome-extension.clickbait-disabled.eye{
+  background: none;
+  content:url("../image/eye-disabled.png")
+}
+
+.clickbait-blocker-chrome-extension.clickbait-disabled {
+  background: #f1f1f1;
+  color: #d1d1d1;
+}
+.clickbait-blocker-chrome-extension.clickbait-disabled:hover {
+  background: #f1f1f1 !important;
+}
+
+.clickbait-blocker-chrome-extension.text {
+  font-weight: normal !important;
+  text-align: center !important;
+  background: #f5f5f5 !important;
+  color: #d2232a !important;
+  font-size: 16px !important;
+  text-shadow: none !important;
+}
+.clickbait-blocker-chrome-extension.hide {
+  display: none !important;
+}
+.clickbait-blocker-chrome-extension.transparent {
+  opacity: 0.1 !important;
+}
+
+.clickbait-blocker-chrome-extension-reveal-buttons-wrapper {
+  position: absolute;
+  height: 45px;
+  background: #E5E5EA;
+  border-radius: 25px;
+  float: right;
+  width: 125px;
+  z-index: 9999;
+  color: #000;
+  font: bold 11px 'Lucida Sans', 'Lucida Grande', 'Lucida', helvetica, clean, sans-serif;
+  line-height: 30px;
+}
+
+.clickbait-blocker-chrome-extension-confirm-label {
+	color: #000;
+	margin: 3px 0;
+	text-align: center;
+	font: bold 11px 'Lucida Sans', 'Lucida Grande', 'Lucida', helvetica, clean, sans-serif;
+}
+
+.clickbait-blocker-chrome-extension-confirm {
+	background-image: url('chrome-extension://mlljfchleidlfeemodakgpjkmagpafcn/image/confirm.png');
+	float: left;
+	background-size: cover;
+	cursor: pointer;
+	position: relative;
+	right: 2px;
+	width: 25px;
+	height: 25px;
+	margin: 0 25px;
+}
+
+.clickbait-blocker-chrome-extension-infirm {
+	background-image: url('chrome-extension://mlljfchleidlfeemodakgpjkmagpafcn/image/infirm.png');
+	float: left;
+	background-size: cover;
+	cursor: pointer;
+	position: relative;
+	right: 2px;
+	width: 25px;
+	height: 25px;
+}

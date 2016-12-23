@@ -1,0 +1,114 @@
+body.clickbait-blocker-chrome-extension {
+  margin: 0;
+  position: absolute;
+  top:0;
+  width:100%;
+  background-color: #f7f7f7;
+}
+
+.clickbait-blocker-chrome-extension header {
+  height: 100px;
+  border-bottom: 1px solid #cfcdba;
+  background-color: #eee;
+}
+
+.clickbait-blocker-chrome-extension .logo-container{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 50px;
+}
+
+.clickbait-blocker-chrome-extension .logo {
+  object-fit: cover;
+  width: 90px;
+  vertical-align: middle;
+}
+
+.clickbait-blocker-chrome-extension .logo-label {
+  font-size: 2em;
+}
+
+.clickbait-blocker-chrome-extension .content {
+  padding: 50px;
+}
+
+.clickbait-blocker-chrome-extension .radio-group {
+  margin: 30px 30px 10px 30px;
+}
+.clickbait-blocker-chrome-extension input[type=radio] {
+  margin-bottom: 5px;
+}
+
+.clickbait-blocker-chrome-extension .no-whitelist {
+  margin-left: 30px;
+}
+
+.clickbait-blocker-chrome-extension .title {
+  font-size: 27px;
+  position: relative;
+  top: 20px;
+  left: 10px;
+}
+
+.clickbait-blocker-chrome-extension .whitelist-item {
+  min-width: 400px;
+  float: left;
+  margin: 10px 0;
+}
+
+.clickbait-blocker-chrome-extension .remove-item {
+  margin: 10px 0;
+}
+
+.clickbait-blocker-chrome-extension .hide {
+  display: none;
+}
+
+.clickbait-blocker-chrome-extension .section {
+  margin-bottom: 30px;
+  border-bottom: 1px solid #d3dce1;
+  padding-bottom: 20px;
+}
+
+.clickbait-blocker-chrome-extension .custom-domain-row-container {
+  margin: 20px 0;
+}
+
+.clickbait-blocker-chrome-extension .custom-domain-input, #custom-relevance-select{
+  margin: 0 30px 0 10px;
+}
+
+.clickbait-blocker-chrome-extension #custom-relevance-select {
+  width: 60px;
+}
+
+.clickbait-blocker-chrome-extension #general-relevance {
+  margin-left: 10px;
+  width: 60px;
+}
+
+.clickbait-blocker-chrome-extension .custom-domain-item {
+  float: left;
+  min-width: 250px;
+  margin: 0;
+}
+
+.clickbait-blocker-chrome-extension .custom-domain-relevance {
+  float: left;
+  margin: 0 45px 0 0;
+  min-width: 105px;
+}
+
+.clickbait-blocker-chrome-extension .remove-custom-item {
+  position: relative;
+  bottom: 5px;
+}
+
+.clickbait-blocker-chrome-extension .custom-domain-row {
+  margin: 10px 0;
+}
+
+.clickbait-blocker-chrome-extension .custom-domain-row:first-of-type {
+  margin-top: 30px;
+}
