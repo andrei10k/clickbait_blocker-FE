@@ -202,6 +202,21 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
 		return true;
 	}
 
+	if (message.type === 'refresh-session') {
+		chrome.storage.local.get(['email'], function (data) {
+			if (!data.email) {
+				sendResponse({ error: 'no email' });
+				return;
+			}
+
+			// Accounts created before session tokens existed have an email only.
+			registerUser({ email: data.email, accessToken: '' }, function (error, stored) {
+				sendResponse(error ? { error: error.message } : { email: stored.email, token: stored.token });
+			});
+		});
+		return true;
+	}
+
 	if (message.type === 'sign-out') {
 		chrome.storage.local.remove(['email', 'userId', 'token', 'aiUsage'], function () {
 			chrome.identity.clearAllCachedAuthTokens(function () {

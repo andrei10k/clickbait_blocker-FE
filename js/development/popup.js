@@ -145,8 +145,17 @@ function renderQuota(usage) {
 
 $(function(){
 
-  storage.get('email', function(data) {
+  storage.get(['email', 'token'], function(data) {
     renderAccount(data.email);
+
+    if (data.email && !data.token) {
+      // Signed in before session tokens existed: trade the email for one.
+      chrome.runtime.sendMessage({ type: 'refresh-session' }, function() {
+        // Nothing to render: the next popup open picks the token up.
+      });
+      return;
+    }
+
     if (!data.email) {
       // A previous attempt may have completed after this popup closed.
       resumeSignIn(function(email) {
@@ -260,7 +269,9 @@ $(function(){
     }
 
     if (result.error) {
-      $('.clickbait-quota-js').text('Scan failed, try again in a moment.');
+      $('.clickbait-quota-js').text(
+        result.auth ? 'Sign in again to use AI.' : 'Scan failed, try again in a moment.'
+      );
       return;
     }
 

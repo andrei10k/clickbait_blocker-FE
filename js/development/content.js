@@ -309,7 +309,7 @@ var content = {
 		}
 	},
 	cacheKey: function (url) {
-		return 'summary:' + url;
+		return 'summary:v2:' + url;
 	},
 	readCache: function (url, callback) {
 		var key = content.cacheKey(url);
@@ -568,8 +568,8 @@ var content = {
 					}
 					callback && callback({ scanned: applied, cached: false });
 				})
-				.fail(function () {
-					callback && callback({ error: true });
+				.fail(function (xhr) {
+					callback && callback({ error: true, auth: !!(xhr && xhr.status === 401) });
 				});
 		});
 	},
@@ -592,7 +592,7 @@ var content = {
 		if (percent >= 33) return 'clickbait-ai-score-medium';
 		return 'clickbait-ai-score-low';
 	},
-	showAiSummary: function (url, title, offset) {
+	showAiSummary: function (url, title, offset, retried) {
 		var $text = $('<div class="clickbait-ai-text clickbait-ai-loading"></div>').text('Reading the article...'),
 			$wrapper = $('<div class="clickbait-ai-wrapper" role="dialog" aria-label="AI preview"></div>')
 				.css({
@@ -611,6 +611,14 @@ var content = {
 				.text(result.content || 'There is nothing to summarize on this page.');
 
 			content.updateLinkScore(url, result.score, result.reason);
+
+			if (result.keyPoints && result.keyPoints.length) {
+				var $points = $('<ul class="clickbait-ai-points"></ul>');
+				result.keyPoints.slice(0, 4).forEach(function (point) {
+					$points.append($('<li class="clickbait-ai-point"></li>').text(point));
+				});
+				$wrapper.append($points);
+			}
 
 			if (result.score !== undefined && result.score !== null && result.score !== '') {
 				$wrapper.append(
@@ -679,9 +687,30 @@ var content = {
 					}
 
 					var message = 'The AI could not read this article. Try again in a moment.';
-					if (xhr && xhr.status === 429) {
+					if (xhr && xhr.status === 401) {
+						message = 'Sign in again from the extension popup to use AI.';
+					} else if (xhr && xhr.status === 429) {
 						message = 'Daily AI limit reached. Try again tomorrow.';
 					}
+
+					// Accounts created before session tokens existed have an email but
+					// no token: trade it for one and retry exactly once.
+					if (xhr && xhr.status === 401 && !retried) {
+						try {
+							chrome.runtime.sendMessage({ type: 'refresh-session' }, function (response) {
+								if (!response || !response.token) {
+									$text.removeClass('clickbait-ai-loading').text(message);
+									return;
+								}
+								session.token = response.token;
+								content.showAiSummary(url, title, offset, true);
+							});
+							return;
+						} catch (error) {
+							orphan();
+						}
+					}
+
 					$text.removeClass('clickbait-ai-loading').text(message);
 				});
 		});

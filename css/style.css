@@ -386,6 +386,17 @@
   font-style: italic;
 }
 
+.clickbait-ai-points {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  list-style: disc;
+}
+
+.clickbait-ai-point {
+  margin-bottom: 4px;
+  color: #222;
+}
+
 .clickbait-ai-tags {
   margin-top: 8px;
 }
@@ -560,6 +571,10 @@ a.clickbait-score-low::after {
 
   .clickbait-ai-text,
   .clickbait-ai-reason {
+    color: #dcdce0;
+  }
+
+  .clickbait-ai-point {
     color: #dcdce0;
   }
 
