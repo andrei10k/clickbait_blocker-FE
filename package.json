@@ -1,10 +1,12 @@
 {
   "name": "clickbaitkiller_fe",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "description": "Chrome extension that hides clickbait articles.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node scripts/build.mjs",
+    "watch": "node scripts/build.mjs --watch",
+    "package": "npm run build && node scripts/package.mjs"
   },
   "repository": {
     "type": "git",
@@ -17,10 +19,6 @@
   "license": "ISC",
   "homepage": "https://github.com/andrei10k/clickbait_blocker-FE.git#readme",
   "devDependencies": {
-    "del": "^2.2.2",
-    "gulp": "^3.9.1",
-    "gulp-cli": "^1.2.2",
-    "gulp-uglify": "^2.0.0",
-    "gulp-watch": "^4.3.10"
+    "esbuild": "^0.28.2"
   }
 }

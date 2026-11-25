@@ -6,8 +6,15 @@ https://chrome.google.com/webstore/detail/clickbait-blocker/pebndnefgjnpdmcjjhjc
 
 How to modify:
 
-- npm install
-- gulp watch (make sure you have gulp-cli installed globally)
-- make changes to js/developement/*.js and on save the js/build/*.js files will be updated.
+- npm install (the only dependency is esbuild, used for minification)
+- npm run watch
+- make changes to js/development/*.js and on save the js/build/*.js files will be updated, minified with esbuild.
 - those files will be uploaded in your chrome extension package
 - go to css/style.css and replace 'mlljfchleidlfeemodakgpjkmagpafcn' with your extension id
+
+How to package for the Web Store:
+
+- npm run package
+- upload dist/clickbait-blocker-<version>.zip
+
+The zip is built from an explicit file list (manifest.json, css, image, js/build, vendor, view), so node_modules and build tooling can never end up in a store upload.
