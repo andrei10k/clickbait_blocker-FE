@@ -1,20 +1,33 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "ClickBait Blocker",
   "icons": {
     "16": "image/icon16.png",
     "48": "image/icon48.png",
     "128": "image/icon128.png"
   },
-  "browser_action": {
+  "action": {
     "default_icon": "image/large-icon.png",
     "default_popup": "view/popup.html"
   },
   "permissions": [
     "storage",
-    "tabs"
+    "tabs",
+    "identity",
+    "identity.email",
+    "alarms",
+    "scripting",
+    "activeTab"
   ],
-  "version": "0.0.16",
+  "version": "0.0.31",
+  "background": {
+    "service_worker": "js/build/background.js"
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkJPfC/WrxUq0XC5xnMAHKoz1TAO1JAcqZcQnUVpxZsHq6mBOkfKQvD1T2tZwUdk+IPmRuB2Ocqrr0G7XFoBz5bLLoNrpV4KuYa4jsAgP4wlXQmfppwzBeJEYqaX4wTBWe/JRrJAu2Fx6xAoY/L595hDzccJarFMSAVqQBjV4+rm6XpNSygTiWce1DAUzcvydZfe5xVJcE382Jy6Tla2qntG5Wgx7zchHZtl9dQDeVxC0/QCJXA8udIwk3C9XnFXsIeEsIzwb6D556BdzTdtcr1DGr7l9PFvvoHLN1PLw1occne52HIs7vC7573EJR/3hr5NbTQv92c12VKL4uoTFiQIDAQAB",
+  "oauth2": {
+    "client_id": "561917015943-b2vga0cl2gv2io7u5hag74clnamfaihf.apps.googleusercontent.com",
+    "scopes": ["https://www.googleapis.com/auth/userinfo.email"]
+  },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
@@ -24,11 +37,12 @@
   ],
   "options_ui": {
     "page": "view/options.html",
-    "chrome_style": true,
     "open_in_tab": true
   },
   "web_accessible_resources": [
-    "image/*.png",
-    "image/*.gif"
+    {
+      "resources": ["image/*.png", "image/*.gif", "image/*.svg"],
+      "matches": ["<all_urls>"]
+    }
   ]
 }

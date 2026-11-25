@@ -14,11 +14,42 @@
             <span class="logo-label">Clickbait Blocker</span>
         </div>
     </header>
+    <div class="content clickbait-account">
+        <button class="clickbait-account-signin-js">Sign in with Google</button>
+        <div class="clickbait-account-signed-in-js hide">
+            <span class="clickbait-account-email-js"></span>
+            <a class="clickbait-account-signout-js">Sign out</a>
+        </div>
+        <div class="clickbait-account-error-js hide"></div>
+    </div>
+    <div class="content clickbait-ai-controls">
+        <div class="clickbait-ai-unlocked-js hide">
+            <button class="clickbait-scan-js">Scan page with AI</button>
+            <label class="clickbait-ai-toggle">
+                <input type="checkbox" class="clickbait-ai-toggle-js">
+                <span>AI previews</span>
+            </label>
+        </div>
+        <div class="clickbait-ai-locked-js">Sign in with Google to unlock AI previews and page scans.</div>
+        <div class="clickbait-quota-js"></div>
+    </div>
     <div class="content">
         <h3>Clickbaits:</h3>
         <b class="clickbaits-no-js">0</b> <span> on this page</span>
         <br /><br />
         <b class="marked-by-you-no-js">0</b> <span> marked by you on this domain since the beginning of time</span>
+        <div class="clickbait-stats">
+            <span class="clickbait-stat"><b class="clickbait-stat-hidden-js">0</b> hidden this week</span>
+            <span class="clickbait-stat"><b class="clickbait-stat-previews-js">0</b> AI previews</span>
+        </div>
+    </div>
+    <div class="content clickbait-suggestion-js hide">
+        <span class="clickbait-suggestion-text-js"></span>
+        <a class="clickbait-suggestion-action-js">Whitelist it</a>
+    </div>
+    <div class="content clickbait-domain-relevance">
+        <label for="clickbait-domain-relevance">Relevance for this site:</label>
+        <input id="clickbait-domain-relevance" class="clickbait-domain-relevance-js" type="number" min="0" value="0" />
     </div>
     <div class="content">
         <div class="item-content">

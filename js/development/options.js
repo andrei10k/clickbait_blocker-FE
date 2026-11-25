@@ -81,6 +81,116 @@ $(function() {
 		options.changeGeneralRelevance.call(this);
 	});
 
+  function renderRelevanceCopy(value) {
+    $('.relevance-live-copy-js').html('');
+    $('.relevance-live-copy-js')
+      .append(document.createTextNode('Links with more than '))
+      .append($('<b></b>').text(value || 0))
+      .append(document.createTextNode(' net clickbait votes will be hidden.'));
+  }
+
+  options.getGeneralRelevance(function(data) {
+    renderRelevanceCopy(data.generalRelevance);
+  });
+
+  $generalRelevance.on('input', function() {
+    renderRelevanceCopy($(this).val());
+  });
+
+  $('.whitelist-search-js').on('input', function() {
+    var term = $(this).val().trim().toLowerCase();
+    $('.whitelist-row').each(function() {
+      var row = $(this);
+      var matches = row.text().toLowerCase().indexOf(term) !== -1;
+      row.toggleClass('hide', !matches);
+    });
+  });
+
+  $('.settings-export-js').on('click', function() {
+    storage.get(['generalRelevance', 'whitelistedDomains', 'customRelevanceDomains', 'aiEnabled'], function(data) {
+      var payload = JSON.stringify({
+        generalRelevance: data.generalRelevance || 0,
+        whitelistedDomains: data.whitelistedDomains || [],
+        customRelevanceDomains: data.customRelevanceDomains || [],
+        aiEnabled: data.aiEnabled !== false
+      }, null, 2);
+
+      var url = URL.createObjectURL(new Blob([payload], { type: 'application/json' }));
+      var link = document.createElement('a');
+      link.href = url;
+      link.download = 'clickbait-blocker-settings.json';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+      $('.settings-status-js').text('Settings exported.');
+    });
+  });
+
+  $('.settings-import-js').on('click', function() {
+    $('.settings-import-file-js').trigger('click');
+  });
+
+  $('.settings-import-file-js').on('change', function() {
+    var file = this.files && this.files[0];
+    if (!file) {
+      return;
+    }
+
+    var reader = new FileReader();
+    reader.onload = function() {
+      var parsed;
+
+      try {
+        parsed = JSON.parse(reader.result);
+      } catch (error) {
+        $('.settings-status-js').text('That file is not valid JSON.');
+        return;
+      }
+
+      if (!parsed || typeof parsed !== 'object') {
+        $('.settings-status-js').text('That file does not contain settings.');
+        return;
+      }
+
+      var incoming = {};
+
+      if (parsed.generalRelevance !== undefined) {
+        incoming.generalRelevance = Number(parsed.generalRelevance) || 0;
+      }
+      if (Array.isArray(parsed.whitelistedDomains)) {
+        incoming.whitelistedDomains = parsed.whitelistedDomains.map(String);
+      }
+      if (Array.isArray(parsed.customRelevanceDomains)) {
+        incoming.customRelevanceDomains = parsed.customRelevanceDomains
+          .filter(function(item) { return item && item.domain; })
+          .map(function(item) { return { domain: String(item.domain), relevance: Number(item.relevance) || 0 }; });
+      }
+      if (parsed.aiEnabled !== undefined) {
+        incoming.aiEnabled = parsed.aiEnabled !== false;
+      }
+
+      storage.set(incoming, function() {
+        $('.settings-status-js').text('Settings imported. Reloading...');
+        setTimeout(function() { window.location.reload(); }, 600);
+      });
+    };
+
+    reader.readAsText(file);
+  });
+
+  $('.settings-reset-js').on('click', function() {
+    storage.set({
+      generalRelevance: 0,
+      whitelistedDomains: [],
+      customRelevanceDomains: [],
+      aiEnabled: true
+    }, function() {
+      $('.settings-status-js').text('Defaults restored. Reloading...');
+      setTimeout(function() { window.location.reload(); }, 600);
+    });
+  });
+
   options.getWhitelistedDomains(function(data){
     if (data.whitelistedDomains && data.whitelistedDomains.length) {
       var dataObjForMustache = { whitelist: data.whitelistedDomains };

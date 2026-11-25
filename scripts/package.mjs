@@ -16,8 +16,10 @@ const skip = ['image/bannars/*', 'image/icon copy.png'];
 const dist = join(root, 'dist');
 const archive = join(dist, `clickbait-blocker-${manifest.version}.zip`);
 
+// Clear dist so a stale zip from an older manifest version can't be uploaded
+// by mistake.
+await rm(dist, { recursive: true, force: true });
 await mkdir(dist, { recursive: true });
-await rm(archive, { force: true });
 execFileSync('zip', ['-r', '-q', archive, ...files, '-x', ...skip], { cwd: root });
 
 console.log(`packaged ${archive}`);

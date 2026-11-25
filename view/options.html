@@ -28,6 +28,7 @@
                 will be hidden. All articles with the number of "confirmed as clickbait" votes lower than 10 will be shown.
             </i>
         </h4>
+        <p class="relevance-live-copy-js">Links with more than <b>0</b> net clickbait votes will be hidden.</p>
     </div>
 
     <div class="section">
@@ -38,6 +39,7 @@
             </i>
         </h4>
         <div class="whitelist-container-js"></div>
+        <input type="search" class="whitelist-search-js" placeholder="Filter whitelisted domains" />
         <h3 class="no-whitelist-js no-whitelist">Currently you don't have any domains whitelisted</h3>
     </div>
 
@@ -64,6 +66,16 @@
         </div>
 
         <div class="custom-domains-list custom-domains-list-js"></div>
+    </div>
+
+    <div class="section">
+        <h1>Settings</h1>
+        <p>Move your preferences between browsers, or start over.</p>
+        <button class="settings-export-js">Export settings</button>
+        <button class="settings-import-js">Import settings</button>
+        <button class="settings-reset-js">Reset to defaults</button>
+        <input type="file" class="settings-import-file-js hide" accept="application/json" />
+        <p class="settings-status-js"></p>
     </div>
 </div>
 

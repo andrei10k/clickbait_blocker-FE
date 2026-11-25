@@ -91,7 +91,7 @@
 }
 
 .clickbait-blocker-chrome-extension-mark {
-  background-image: url('chrome-extension://mlljfchleidlfeemodakgpjkmagpafcn/image/plus.png');
+  background-image: var(--cb-icon-plus, none);
   float: right;
   background-size: cover;
   cursor: pointer;
@@ -106,11 +106,11 @@
 .clickbait-blocker-chrome-extension-confirm.loading,
 .clickbait-blocker-chrome-extension-infirm.loading
 {
-  background-image: url('chrome-extension://mlljfchleidlfeemodakgpjkmagpafcn/image/loading.gif');
+  background-image: var(--cb-icon-loading, none);
 }
 
 .clickbait-blocker-chrome-extension-unmark {
-  background-image: url('chrome-extension://mlljfchleidlfeemodakgpjkmagpafcn/image/minus.png');
+  background-image: var(--cb-icon-minus, none);
   width: 30px;
   height: 30px;
   float: left;
@@ -168,7 +168,7 @@
 }
 
 .clickbait-upvotes {
-  background-image: url('chrome-extension://mlljfchleidlfeemodakgpjkmagpafcn/image/up.png');
+  background-image: var(--cb-icon-up, none);
   background-size: cover;
   width: 30px;
   height: 30px;
@@ -179,7 +179,7 @@
   margin-right: 25px;
 }
 .clickbait-downvotes {
-  background-image: url('chrome-extension://mlljfchleidlfeemodakgpjkmagpafcn/image/down.png');
+  background-image: var(--cb-icon-down, none);
   background-size: cover;
   width: 30px;
   height: 30px;
@@ -238,7 +238,7 @@
 }
 
 .clickbait-blocker-chrome-extension-confirm {
-	background-image: url('chrome-extension://mlljfchleidlfeemodakgpjkmagpafcn/image/confirm.png');
+	background-image: var(--cb-icon-confirm, none);
 	float: left;
 	background-size: cover;
 	cursor: pointer;
@@ -250,7 +250,7 @@
 }
 
 .clickbait-blocker-chrome-extension-infirm {
-	background-image: url('chrome-extension://mlljfchleidlfeemodakgpjkmagpafcn/image/infirm.png');
+	background-image: var(--cb-icon-infirm, none);
 	float: left;
 	background-size: cover;
 	cursor: pointer;
@@ -259,3 +259,333 @@
 	width: 25px;
 	height: 25px;
 }
+/* account (popup only) */
+.clickbait-account {
+  text-align: center;
+  font: normal 12px 'Lucida Sans', 'Lucida Grande', 'Lucida', helvetica, clean, sans-serif;
+}
+
+.clickbait-account-signin-js {
+  padding: 7px 14px;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  background: #fff;
+  color: #3c4043;
+  font: bold 12px 'Lucida Sans', 'Lucida Grande', 'Lucida', helvetica, clean, sans-serif;
+  cursor: pointer;
+}
+
+.clickbait-account-signin-js:hover {
+  background: #f6f6f6;
+}
+
+.clickbait-account-signin-js:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.clickbait-account-email-js {
+  color: #333;
+  margin-right: 8px;
+}
+
+.clickbait-account-signout-js {
+  color: #d2232a;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.clickbait-account-error-js {
+  color: #d2232a;
+  margin-top: 6px;
+}
+
+/* ai preview */
+.clickbait-blocker-chrome-extension-buttons-wrapper.has-ai {
+  width: 170px;
+}
+
+.clickbait-ai-button {
+  float: right;
+  position: relative;
+  right: 6px;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  background-image: var(--cb-icon-ai, none);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+.clickbait-ai-wrapper {
+  position: absolute;
+  z-index: 10000;
+  box-sizing: border-box;
+  width: 320px;
+  max-width: 90vw;
+  padding: 14px 16px;
+  background: #fff;
+  color: #111;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  font: normal 13px/1.5 'Lucida Sans', 'Lucida Grande', 'Lucida', helvetica, clean, sans-serif;
+  text-align: left;
+  white-space: normal;
+}
+
+.clickbait-ai-heading {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.clickbait-ai-text {
+  color: #222;
+}
+
+.clickbait-ai-loading {
+  color: #666;
+  font-style: italic;
+}
+
+.clickbait-ai-score {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.clickbait-ai-score-high {
+  color: #d2232a;
+}
+
+.clickbait-ai-score-medium {
+  color: #b26a00;
+}
+
+.clickbait-ai-score-low {
+  color: #1c7c3c;
+}
+
+.clickbait-ai-close {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  font-size: 16px;
+  line-height: 1;
+  color: #999;
+  cursor: pointer;
+}
+
+.clickbait-ai-close:hover {
+  color: #333;
+}
+
+.clickbait-ai-reason {
+  margin-top: 8px;
+  color: #444;
+  font-style: italic;
+}
+
+.clickbait-ai-tags {
+  margin-top: 8px;
+}
+
+.clickbait-ai-tag {
+  display: inline-block;
+  margin: 0 6px 4px 0;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: #f0f0f3;
+  color: #444;
+  font-size: 11px;
+}
+
+.clickbait-ai-cached {
+  margin-top: 6px;
+  color: #999;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+/* heuristics and AI scores injected into the page */
+a.clickbait-heuristic {
+  outline: 1px dashed rgba(210, 35, 42, 0.55);
+  outline-offset: 2px;
+}
+
+a.clickbait-score {
+  position: relative;
+}
+
+a.clickbait-score::after {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-left: 4px;
+  border-radius: 50%;
+  vertical-align: middle;
+  opacity: 0.85;
+}
+
+a.clickbait-score-high::after {
+  background: #d2232a;
+}
+
+a.clickbait-score-medium::after {
+  background: #d99400;
+}
+
+a.clickbait-score-low::after {
+  background: #2e9e57;
+}
+
+.clickbait-why {
+  margin-top: 4px;
+  color: #555;
+  font: normal 11px 'Lucida Sans', 'Lucida Grande', 'Lucida', helvetica, clean, sans-serif;
+  max-width: 260px;
+}
+
+/* toast */
+.clickbait-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  padding: 10px 18px;
+  border-radius: 20px;
+  background: rgba(25, 25, 28, 0.92);
+  color: #fff;
+  z-index: 2147483647;
+  font: normal 13px 'Lucida Sans', 'Lucida Grande', 'Lucida', helvetica, clean, sans-serif;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.clickbait-toast-hide {
+  opacity: 0;
+}
+
+/* popup additions */
+.clickbait-ai-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.clickbait-scan-js {
+  padding: 6px 10px;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  background: #fff;
+  color: #3c4043;
+  font: bold 11px 'Lucida Sans', 'Lucida Grande', 'Lucida', helvetica, clean, sans-serif;
+  cursor: pointer;
+}
+
+.clickbait-scan-js:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.clickbait-ai-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #333;
+  font: normal 11px 'Lucida Sans', 'Lucida Grande', 'Lucida', helvetica, clean, sans-serif;
+}
+
+.clickbait-quota-js {
+  width: 100%;
+  color: #777;
+  font: normal 10px 'Lucida Sans', 'Lucida Grande', 'Lucida', helvetica, clean, sans-serif;
+}
+
+.clickbait-stats {
+  margin-top: 8px;
+  display: flex;
+  gap: 12px;
+  color: #777;
+  font: normal 10px 'Lucida Sans', 'Lucida Grande', 'Lucida', helvetica, clean, sans-serif;
+}
+
+.clickbait-suggestion-js {
+  color: #333;
+  font: normal 11px 'Lucida Sans', 'Lucida Grande', 'Lucida', helvetica, clean, sans-serif;
+}
+
+.clickbait-suggestion-action-js {
+  color: #0b62d6;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-left: 4px;
+}
+
+.clickbait-domain-relevance {
+  color: #333;
+  font: normal 11px 'Lucida Sans', 'Lucida Grande', 'Lucida', helvetica, clean, sans-serif;
+}
+
+.clickbait-domain-relevance-js {
+  width: 52px;
+  margin-left: 6px;
+}
+
+.whitelist-search-js {
+  width: 100%;
+  margin: 8px 0;
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.relevance-live-copy-js {
+  margin: 8px 0 0;
+  color: #333;
+}
+
+/* dark mode and motion */
+@media (prefers-color-scheme: dark) {
+  .clickbait-ai-wrapper {
+    background: #1f1f22;
+    color: #f2f2f4;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  }
+
+  .clickbait-ai-text,
+  .clickbait-ai-reason {
+    color: #dcdce0;
+  }
+
+  .clickbait-ai-tag {
+    background: #2c2c31;
+    color: #d6d6da;
+  }
+
+  .clickbait-ai-heading {
+    color: #fff;
+  }
+
+  .clickbait-toast {
+    background: rgba(240, 240, 244, 0.95);
+    color: #16161a;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clickbait-toast {
+    transition: none;
+  }
+}
+
+.clickbait-ai-locked-js {
+  color: #777;
+  font: normal 10px 'Lucida Sans', 'Lucida Grande', 'Lucida', helvetica, clean, sans-serif;
+}
+
