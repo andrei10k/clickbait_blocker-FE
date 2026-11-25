@@ -19,7 +19,7 @@
     "scripting",
     "activeTab"
   ],
-  "version": "0.0.31",
+  "version": "1.0.1",
   "background": {
     "service_worker": "js/build/background.js"
   },
